@@ -72,42 +72,42 @@ const Signup = () => {
                                             return Promise.resolve();
                                         }
                                         return Promise.reject(new Error('Passwords do not match!'));
-                    },
-                }),
-            ]}
-        >
-            <Input.Password prefix={<LockOutlined />} placeholder="Confirm Password" size="large" />
-        </Form.Item>
+                                    },
+                                }),
+                            ]}
+                        >
+                            <Input.Password prefix={<LockOutlined />} placeholder="Confirm Password" size="large" />
+                        </Form.Item>
 
-        <Form.Item>
-            <Button type="primary" htmlType="submit" size="large" style={{ width: '100%' }} loading={isLoading}>
-                Register
-            </Button>
-        </Form.Item>
-        
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit" size="large" style={{ width: '100%' }} loading={isLoading}>
+                                Register
+                            </Button>
+                        </Form.Item>
 
-        {/* {error && (
+
+                        {/* {error && (
     <Form.Item>
         <div style={{ color: 'red' }}>{error.message || 'An error occurred'}</div>
     </Form.Item>
 )} */}
 
-        {/* {error && (
+                        {/* {error && (
             <Form.Item>
                 <div style={{ color: 'red' }}>{error}</div>
             </Form.Item>
         )} */}
 
-        <Form.Item style={{ textAlign: 'center' }}>
-            <span>Already registered? </span>
-            <Button type="link" style={{ padding: 0 }} onClick={() => navigate('/signin')}>
-                Sign in
-            </Button>
-        </Form.Item>
-    </Form>
-</div>
-</Col>
-</Row>
+                        <Form.Item style={{ textAlign: 'center' }}>
+                            <span>Already registered? </span>
+                            <Button type="link" style={{ padding: 0 }} onClick={() => navigate('/signin')}>
+                                Sign in
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </div>
+            </Col>
+        </Row>
     );
 };
 

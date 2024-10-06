@@ -4,6 +4,7 @@ const http = require('http');
 const cors = require('cors');
 const { connectDB } = require('./config/database');
 const socketService = require('./services/socket');
+const cookieParser = require('cookie-parser');
 
 const authRoutes = require('./routes/auth');
 
@@ -14,7 +15,12 @@ const app = express();
 const server = http.createServer(app);
 
 // Middleware
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Connect to Database
@@ -24,6 +30,13 @@ connectDB();
 app.use('/api/auth', authRoutes);
 // app.use('/api/users', userRoutes);
 // app.use('/api/messages', messageRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Something went wrong!' });
+  });
+  
 
 // Socket.io setup
 socketService.init(server);
