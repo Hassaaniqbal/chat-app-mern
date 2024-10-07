@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Main from './pages/Main';
 import { verifyAuth } from './redux/authSlice';
 import './App.css';
+import ChatApp from './pages/Home'
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isVerifying } = useSelector((state) => state.auth);
@@ -41,6 +42,11 @@ function App() {
         <Route path='/' element={
           <ProtectedRoute>
             <Main />
+          </ProtectedRoute>
+        } />
+        <Route path='/home' element={
+          <ProtectedRoute>
+            <ChatApp />
           </ProtectedRoute>
         } />
       </Routes>
