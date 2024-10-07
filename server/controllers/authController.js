@@ -86,3 +86,16 @@ exports.logout = (req, res) => {
   res.json({ message: 'Logged out successfully' });
 };
 
+exports.verifyAuth = (req, res) => {
+  // The user object should be attached to the request by your authentication middleware
+  if (req.user) {
+    res.json({ user: { id: req.user._id, username: req.user.username } });
+  } else {
+    res.status(401).json({ message: 'Not authenticated' });
+  }
+};
+
+
+
+
+
